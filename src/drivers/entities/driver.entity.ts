@@ -1,22 +1,28 @@
-import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, OneToMany } from 'typeorm';
+import { Vehicle } from '../../vehicles/entities/vehicle.entity'; // <--- 1. Importar Vehicle
 
-@Entity() // Esto le dice a TypeORM que esta clase es una tabla SQL
+@Entity()
 export class Driver {
-    @PrimaryGeneratedColumn('uuid') // Genera un ID único y complejo automáticamente
+    @PrimaryGeneratedColumn('uuid')
     id: string;
 
     @Column()
     name: string;
 
-    @Column({ unique: true }) // El email no se puede repetir
+    @Column({ unique: true })
     email: string;
 
     @Column()
     phone: string;
 
-    @Column({ default: true }) // Por defecto, el conductor está activo
+    @Column({ default: true })
     isActive: boolean;
 
-    @CreateDateColumn() // Guarda la fecha de creación automáticamente
+    @CreateDateColumn()
     createdAt: Date;
+
+    // --- 2. LA RELACIÓN INVERSA ---
+    // Un Conductor puede tener "Muchos" vehículos (OneToMany)
+    @OneToMany(() => Vehicle, (vehicle) => vehicle.driver)
+    vehicles: Vehicle[];
 }
