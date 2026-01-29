@@ -1,5 +1,6 @@
 import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, OneToMany } from 'typeorm';
-import { Vehicle } from '../../vehicles/entities/vehicle.entity'; // <--- 1. Importar Vehicle
+import { Vehicle } from '../../vehicles/entities/vehicle.entity'; // Importamos Vehículo
+import { Shipment } from '../../shipments/entities/shipment.entity'; // Importamos Envío
 
 @Entity()
 export class Driver {
@@ -21,8 +22,12 @@ export class Driver {
     @CreateDateColumn()
     createdAt: Date;
 
-    // --- 2. LA RELACIÓN INVERSA ---
-    // Un Conductor puede tener "Muchos" vehículos (OneToMany)
+    // --- RELACIÓN 1: Vehículos ---
+    // Esto es lo que le faltaba y causaba el error en Vehicle
     @OneToMany(() => Vehicle, (vehicle) => vehicle.driver)
     vehicles: Vehicle[];
+
+    // --- RELACIÓN 2: Envíos (Ya que estamos aquí, la dejamos lista) ---
+    @OneToMany(() => Shipment, (shipment) => shipment.driver)
+    shipments: Shipment[];
 }

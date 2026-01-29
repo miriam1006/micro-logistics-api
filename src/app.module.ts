@@ -5,6 +5,9 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { DriversModule } from './drivers/drivers.module';
 import { VehiclesModule } from './vehicles/vehicles.module';
+import { ClientsModule } from './clients/clients.module';
+import { ShipmentsModule } from './shipments/shipments.module';
+import { ShipmentLogsModule } from './shipment-logs/shipment-logs.module';
 
 @Module({
   imports: [
@@ -27,6 +30,12 @@ import { VehiclesModule } from './vehicles/vehicles.module';
     DriversModule,
 
     VehiclesModule,
+
+    ClientsModule,
+
+    ShipmentsModule,
+
+    ShipmentLogsModule,
   ],
   controllers: [AppController],
   providers: [AppService],
