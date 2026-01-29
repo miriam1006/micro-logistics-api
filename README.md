@@ -1,98 +1,50 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
-</p>
+# 🚛 Micro Logistics System
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+Sistema integral de gestión logística Full Stack. Permite la asignación, seguimiento y actualización de estados de envíos en tiempo real, conectando una API robusta en la nube con una aplicación móvil para conductores.
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+![Status](https://img.shields.io/badge/Status-Live-success)
+![Stack](https://img.shields.io/badge/Stack-FullStack-blue)
 
-## Description
+## 🚀 Arquitectura del Proyecto
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+El sistema está construido con una arquitectura monolítica modular, desplegada en la nube para acceso global.
 
-## Project setup
+* **Backend:** NestJS (Node.js framework) + TypeScript.
+* **Base de Datos:** PostgreSQL (vía Supabase) con ORM TypeORM.
+* **Frontend:** Ionic Framework + React (App Híbrida).
+* **Infraestructura:** Render (Backend Host) + GitHub (Control de versiones).
 
-```bash
-$ npm install
-```
+## 🛠️ Tecnologías Clave
 
-## Compile and run the project
+### Backend (API REST)
+* **NestJS:** Para una estructura escalable y modular.
+* **TypeORM:** Manejo de relaciones SQL (OneToMany, ManyToOne) y migraciones.
+* **Swagger:** Documentación automática de endpoints (`/api`).
+* **Class-Validator:** Validación estricta de datos de entrada (DTOs).
+* **Automated Triggers:** Lógica de negocio para actualizar estados de envíos basados en bitácoras (Logs).
 
-```bash
-# development
-$ npm run start
+### Frontend (Mobile App)
+* **Ionic React:** Interfaz nativa y reactiva.
+* **Axios:** Consumo de API REST.
+* **Hooks:** Gestión de estado (`useState`, `useEffect`) para actualizaciones en tiempo real.
+* **Cloud Connection:** Configurada para consumir datos del despliegue en Render, permitiendo funcionamiento independiente del entorno local.
 
-# watch mode
-$ npm run start:dev
+## 📦 Funcionalidades (MVP)
 
-# production mode
-$ npm run start:prod
-```
+1.  **Gestión de Entidades:** CRUD completo para Conductores, Vehículos y Clientes.
+2.  **Asignación Inteligente:** Vinculación de vehículos a conductores y envíos a clientes.
+3.  **Tracking en Tiempo Real:**
+    * El conductor visualiza sus envíos asignados.
+    * Visualización de rutas (Origen -> Destino).
+4.  **Bitácora de Eventos (Logs):**
+    * Registro de cambios de estado (`PENDING` -> `IN_TRANSIT` -> `DELIVERED`).
+    * Actualización en cascada automática del estado del envío padre.
 
-## Run tests
+## 🌐 Enlaces
 
-```bash
-# unit tests
-$ npm run test
+* **API Documentation (Swagger):** [https://micro-logistics-api.onrender.com/api](https://micro-logistics-api.onrender.com/api)
+* **Repositorio Backend:** [Link a tu repo de la API]
+* **Repositorio App:** [Link a tu repo de la App]
 
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
-```
-
-## Deployment
-
-When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
-
-If you are looking for a cloud-based platform to deploy your NestJS application, check out [Mau](https://mau.nestjs.com), our official platform for deploying NestJS applications on AWS. Mau makes deployment straightforward and fast, requiring just a few simple steps:
-
-```bash
-$ npm install -g @nestjs/mau
-$ mau deploy
-```
-
-With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.
-
-## Resources
-
-Check out a few resources that may come in handy when working with NestJS:
-
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Deploy your application to AWS with the help of [NestJS Mau](https://mau.nestjs.com) in just a few clicks.
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
-
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+---
+*Desarrollado como parte de un portafolio profesional de desarrollo Full Stack.*
